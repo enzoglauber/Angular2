@@ -13,5 +13,8 @@ import { AppComponent  } from './app.component';
 	bootstrap: [
 		AppComponent
 	]
+	// providers: [
+	// 	{ provide: ErrorHandler }
+	// ]
 })
 export class AppModule {}
