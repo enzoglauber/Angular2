@@ -1,0 +1,28 @@
+Meteor create Malic
+
+meteor npm install
+
+meteor npm i -g npm
+
+meteor remove blaze-html-templates
+
+meteor add angular2-compilers
+
+
+meteor npm install --save @angular/common
+meteor npm install --save @angular/compiler
+meteor npm install --save @angular/compiler-cli
+meteor npm install --save @angular/core
+meteor npm install --save @angular/forms
+meteor npm install --save @angular/http
+meteor npm install --save @angular/platform-browser
+meteor npm install --save @angular/platform-browser-dynamic
+meteor npm install --save @angular/platform-server
+meteor npm install --save meteor-rxjs
+meteor npm install --save reflect-metadata
+meteor npm install --save rxjs
+meteor npm install --save zone.js
+meteor npm install --save-dev @types/meteor
+meteor npm install --save-dev @types/meteor-accounts-phone
+meteor npm install --save-dev @types/underscore
+meteor npm install --save-dev meteor-typings
