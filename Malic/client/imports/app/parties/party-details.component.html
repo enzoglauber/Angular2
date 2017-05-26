@@ -1,0 +1,15 @@
+<form *ngIf="party" (submit)="saveParty()">
+	<label>Name</label>
+	<input type="text" [(ngModel)]="party.name" name="name">
+
+	<label>Description</label>
+	<input type="text" [(ngModel)]="party.description" name="description">
+
+	<label>Location</label>
+	<input type="text" [(ngModel)]="party.location" name="location">
+
+	<button type="submit">Save</button>
+
+	<p>\{{party.name}}</p>
+	<a [routerLink]="['/']">Cancel</a>
+</form>

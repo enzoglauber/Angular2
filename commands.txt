@@ -18,6 +18,7 @@ meteor npm install --save @angular/http
 meteor npm install --save @angular/platform-browser
 meteor npm install --save @angular/platform-browser-dynamic
 meteor npm install --save @angular/platform-server
+meteor npm install --save @angular/router
 meteor npm install --save meteor-rxjs
 meteor npm install --save reflect-metadata
 meteor npm install --save rxjs
