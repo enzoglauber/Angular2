@@ -1,16 +1,24 @@
 import { Meteor } from 'meteor/meteor';
 import { Parties } from '../../../both/collections/parties.collection';
+import { Counts } from 'meteor/tmeasday:publish-counts';
 
-Meteor.publish('parties', function() {
-	return Parties.find(buildQuery.call(this));
+interface Options {
+	[key: string]: any;
+}
+
+Meteor.publish('parties', function(options: Options, location?: string) {
+	const selector = buildQuery.call(this, null, location);
+	
+	Counts.publish(this, 'party.pg', Parties.collection.find(selector), { noReady: true });
+	
+	return Parties.find(selector, options);
 });
 
 Meteor.publish('party', function(partyId: string) {
 	return Parties.find(buildQuery.call(this, partyId));
 });
 
-
-function buildQuery(partyId?: string): Object {
+function buildQuery(partyId?: string, location?: string): Object {
 	const isAvailable = {
 		$or: [{
 			// party is public
@@ -28,7 +36,7 @@ function buildQuery(partyId?: string): Object {
 			}]
 		}]
 	};
-
+	
 	if (partyId) {
 		return {
 			// only single party
@@ -39,6 +47,14 @@ function buildQuery(partyId?: string): Object {
 			]
 		};
 	}
-
-	return isAvailable;
+	
+	const searchRegEx = { '$regex': '.*' + (location || '') + '.*', '$options': 'i' };
+	
+	return {
+		$and: [{
+			location: searchRegEx
+		},
+		isAvailable
+		]
+	};
 }
