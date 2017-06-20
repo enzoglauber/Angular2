@@ -33,8 +33,8 @@ export const ImageStore = new UploadFS.store.GridFS({
 		insert: loggedIn,
 		update: loggedIn,
 		remove: loggedIn
-	}),
-	transformWrite(from, to, fileId, file) {
+	})
+	, transformWrite(from, to, fileId, file) {
 		// Resize to 32x32
 		const gm = require('gm');
 

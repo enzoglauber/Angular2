@@ -20,6 +20,7 @@ export class ImagePipe implements PipeTransform {
 			imageUrl = found.url;
 		}
 		
+		console.log('image', found);
 		return imageUrl;
 	}
 }

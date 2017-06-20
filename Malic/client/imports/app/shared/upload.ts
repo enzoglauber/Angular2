@@ -52,7 +52,8 @@ export class UploadComponent implements OnInit {
 
 	onFileDrop(file: File): void {
 		this.uploading = true;
-
+		
+		console.log('file', file);
 		upload(file)
 		.then((result) => {
 			this.uploading = false;

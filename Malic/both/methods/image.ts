@@ -4,6 +4,8 @@ import { ImageStore } from '../collections/image';
 export function upload(data: File): Promise<any> {
 	return new Promise((resolve, reject) => {
 		// pick from an object only: name, type and size
+		console.log("filhoda puta", data);
+
 		const file = {
 			name: data.name,
 			type: data.type,

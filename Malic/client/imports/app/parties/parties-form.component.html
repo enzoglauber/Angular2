@@ -1,4 +1,6 @@
 <form *ngIf="user" [formGroup]="addForm" (ngSubmit)="addParty(); upload.reset();" class="form-inline">
+	
+
 	<fieldset class="form-group">
 		<label for="partyName">Party name</label>
 		<input id="partyName" class="form-control" type="text" formControlName="name" placeholder="Party name" />
@@ -17,6 +19,7 @@
 		</div>
 		<br/><br/>
 		<upload #upload (onFile)="onImage($event)"></upload>
+
 
 		<button type="submit" class="btn btn-primary">Add</button>
 	</fieldset>
