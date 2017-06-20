@@ -30,6 +30,9 @@
 			class="list-group-item ma-party-item">
 			<div class="row">
 				<div class="col-sm-8">
+					
+					<img *ngIf="party.images && party.images.length > 0" class="party-main-image" [src]="party | image">
+
 					<h2 class="ma-party-name">
 						<a [routerLink]="['/party', party._id]">{{party.name}}</a>
 					</h2>

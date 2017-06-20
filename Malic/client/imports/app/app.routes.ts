@@ -12,7 +12,7 @@ export const routes: Route[] = [
 	{ path: '', component: PartiesListComponent },
 	{ path: 'party/:partyId', component: PartyDetailsComponent, canActivate: ['canActivateForLoggedIn'] },
 	{ path: 'login', component: LoginComponent },
-	{ path: 'signup', component: SignupComponent }
+	{ path: 'signup', component: SignupComponent },
 	{ path: 'recover', component: RecoverComponent }
 ];
 

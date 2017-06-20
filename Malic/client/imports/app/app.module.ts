@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AccountsModule } from 'angular2-meteor-accounts-ui';
 import { Ng2PaginationModule } from 'ng2-pagination'
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { FileDropModule } from "angular2-file-drop";
 
 import { AppComponent  } from './app.component';
 import { routes, ROUTES_PROVIDERS } from './app.routes';
@@ -22,7 +23,8 @@ import { AUTH_DECLARATIONS } from "./auth/index";
 		Ng2PaginationModule,
 		AgmCoreModule.forRoot({
 			apiKey: 'AIzaSyAWoBdZHCNh5R-hB5S5ZZ2oeoYyfdDgniA'
-		})
+		}),
+		FileDropModule
 	],
 	declarations: [
 		AppComponent,
