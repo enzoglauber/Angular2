@@ -1,4 +1,3 @@
-// import gm from 'gm';
 import { MongoObservable } from 'meteor-rxjs';
 import { Meteor } from 'meteor/meteor';
 import { UploadFS } from 'meteor/jalik:ufs';
@@ -34,21 +33,4 @@ export const ImageStore = new UploadFS.store.GridFS({
 		update: loggedIn,
 		remove: loggedIn
 	})
-	, transformWrite(from, to, fileId, file) {
-		// Resize to 32x32
-		const gm = require('gm');
-
-		console.log('from \n\n ============================== \n\n', from);
-		console.log('to \n\n ============================== \n\n', to);
-		console.log('fileId \n\n ============================== \n\n', fileId);
-		console.log('file \n\n ============================== \n\n', file);
-		
-		gm(from, file.name)
-		.resize(32, 32)
-		.gravity('Center')
-		.extent(32, 32)
-		.quality(75)
-		.stream()
-		.pipe(to);
-	}
 });

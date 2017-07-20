@@ -1,0 +1,3 @@
+ng serve --port N_DA PORTA  //inicia o server
+ng g c COMPONENT_NAME // CRIAR UM COMPONENT COMPLETO
+ng g m COMPONENT_NAME // CRIAR UM MODULE COMPLETO
