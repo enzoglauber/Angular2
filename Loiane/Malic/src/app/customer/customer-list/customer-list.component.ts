@@ -1,5 +1,6 @@
-import { CustomerService } from '../customer.service';
 import { Component, OnInit } from '@angular/core';
+
+import { CustomerService } from '../customer.service';
 
 @Component({
   selector: 'app-customer-list',
@@ -13,6 +14,12 @@ export class CustomerListComponent implements OnInit {
     this.data = this.customer.get();
 
     // var customer = new CustomerService();
+  } 
+  new() {
+    this.customer.new();
+  }
+  event(event: KeyboardEvent) {
+    console.log('event', event);
   }
 
   ngOnInit() {

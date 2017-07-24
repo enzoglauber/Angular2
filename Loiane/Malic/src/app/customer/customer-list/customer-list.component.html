@@ -2,5 +2,31 @@
   LIST Customer
 </p>
 <ul>
-  <li *ngFor="let customer of data">{{customer}}</li>
+  <li *ngFor="let customer of data">{{ customer }}</li>
+
+  <button (click)="new()" class="btn btn-success">NEW</button>
+  <input type="text" (keyup)="event($event)">
+  
+  
+
+
+<!-- 
+  <select #classe (change)="0">
+    <option value="alert-success">Sucesso</option>
+    <option value="alert-info">Info</option>
+    <option value="alert-warning">Warning</option>
+    <option value="alert-danger">Error</option>
+  </select>
+  <br>
+  <br>
+
+  <div class="alert {{classe.value}}">
+    Texto colorido
+  </div>
+
+  <div class="alert" [class.alert-success]="classe.value == 'alert-success'">Sucesso</div>
+  <div class="alert" [class.alert-info]="classe.value == 'alert-info'" role="alert">Info</div>
+  <div class="alert" [class.alert-warning]="classe.value == 'alert-warning'" role="alert">Warning</div>
+  <div class="alert" [class.alert-danger]="classe.value == 'alert-danger'" role="alert">Error</div> -->
 </ul>
+
