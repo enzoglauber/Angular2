@@ -1,3 +1,4 @@
+import { CustomerService } from '../customer.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-list.component.css']
 })
 export class CustomerListComponent implements OnInit {
+  data: string[];
+  constructor (private customer: CustomerService ) { 
+    console.log('anal', customer);
+    this.data = this.customer.get();
 
-  constructor() { }
+    // var customer = new CustomerService();
+  }
 
   ngOnInit() {
   }

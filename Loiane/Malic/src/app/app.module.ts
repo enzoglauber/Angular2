@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { OpportunityModule } from './opportunity/opportunity.module';
 import { CustomerModule } from './customer/customer.module';
 
+import { CustomerService } from "./customer/customer.service";
+
 @NgModule({
   declarations: [
     AppComponent
@@ -15,7 +17,7 @@ import { CustomerModule } from './customer/customer.module';
     OpportunityModule,
     CustomerModule
   ],
-  providers: [],
+  providers: [CustomerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
