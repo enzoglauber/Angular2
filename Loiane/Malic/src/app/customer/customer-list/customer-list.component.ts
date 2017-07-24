@@ -9,6 +9,8 @@ import { CustomerService } from '../customer.service';
 })
 export class CustomerListComponent implements OnInit {
   data: string[];
+  name: string = "abc";
+  
   constructor (private customer: CustomerService ) { 
     console.log('anal', customer);
     this.data = this.customer.get();
