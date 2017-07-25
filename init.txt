@@ -1,3 +1,5 @@
+ng new NOME_PROJETO --style=sass
+ng set defaults.styleExt scss // SET o precessador
 ng serve --port N_DA PORTA  //inicia o server
 ng g c COMPONENT_NAME // criar um COMPONENT completo
 ng g m COMPONENT_NAME // criar um MODULE completo
