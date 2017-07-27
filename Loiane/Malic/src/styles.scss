@@ -1,5 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
-@import './src/assets/themes/superhero/_variables';
-@import './node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss';
-@import './src/assets/themes/superhero/_bootswatch';
+//SUPERHERO
+// @import './src/assets/themes/superhero/_variables';
+// @import '../node_modules/bootstrap/scss/bootstrap';
+// @import './src/assets/themes/superhero/_bootswatch';
 
+//COSMO
+@import './src/assets/themes/cosmo/_variables';
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import './src/assets/themes/cosmo/_bootswatch';

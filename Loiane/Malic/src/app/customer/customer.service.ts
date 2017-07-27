@@ -5,10 +5,9 @@ export class CustomerService {
   constructor() { }
   //
   get () {
-    return ["BASF", "NESTLE", "Petrobras"];
+    return ['BASF', 'NESTLE', 'Petrobras'];
   }
-  
   new () {
-    console.log("new porra");
+    console.log('new porra');
   }
 }

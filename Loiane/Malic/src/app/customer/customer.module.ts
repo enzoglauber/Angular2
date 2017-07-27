@@ -5,18 +5,17 @@ import { CommonModule } from '@angular/common';
 import { CustomerComponent } from './customer.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 
-
 @NgModule({
   imports: [
-    CommonModule, 
+    CommonModule,
     FormsModule
   ],
   declarations: [
-  	CustomerComponent,
-  	CustomerListComponent
+    CustomerComponent,
+    CustomerListComponent
   ],
   exports: [
-  	CustomerComponent
+    CustomerComponent
   ]
 })
 export class CustomerModule { }

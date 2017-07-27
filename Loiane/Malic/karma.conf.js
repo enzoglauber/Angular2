@@ -12,6 +12,18 @@ module.exports = function (config) {
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
     ],
+    mime: {
+      'text/x-typescript': ['ts','tsx']
+    },
+    proxies: {
+      '/static': 'http://gstatic.com',
+      '/web': 'http://localhost:9000',
+      '/img/': '/base/test/images/',
+      '/proxyfied': {
+        'target': 'http://myserver.localhost',
+        'changeOrigin': true
+      }
+    },
     client:{
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
@@ -25,9 +37,12 @@ module.exports = function (config) {
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
     autoWatch: true,
     browsers: ['Chrome'],
+    captureTimeout: 60000,
+    browserNoActivityTimeout: 360000,
+    hostname:'localhost',
     singleRun: false
   });
 };

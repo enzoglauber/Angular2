@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 // import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+
 
 import { AppComponent } from './app.component';
-
 import { OpportunityModule } from './opportunity/opportunity.module';
+import { CustomerService } from './customer/customer.service';
 import { CustomerModule } from './customer/customer.module';
-
-import { CustomerService } from "./customer/customer.service";
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CustomerService } from "./customer/customer.service";
   ],
   imports: [
     BrowserModule,
+    BsDropdownModule.forRoot(),
     // FormsModule,
     OpportunityModule,
     CustomerModule

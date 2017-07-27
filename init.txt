@@ -4,3 +4,4 @@ ng serve --port N_DA PORTA  //inicia o server
 ng g c COMPONENT_NAME // criar um COMPONENT completo
 ng g m COMPONENT_NAME // criar um MODULE completo
 ng g s COMPONENT_NAME // criar um SERVICE completo
+ng build //BUILD de desenvolvmento
