@@ -1,11 +1,14 @@
 <p>
   LIST Customer
 </p>
-<ul>
-  <li *ngFor="let customer of data">{{ customer }}</li>
-  
 
+<ul *ngIf="data.length > 0" >
+  <li *ngFor="let customer of data">{{ customer }}</li>
 </ul>
+
+<div *ngIf="data.length == 0" >
+  Cadastre algum curso!
+</div>
 
 <!-- <input type="text" [(ngModel)]="name"> -->
 

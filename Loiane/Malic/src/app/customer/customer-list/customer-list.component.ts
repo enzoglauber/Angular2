@@ -13,11 +13,9 @@ export class CustomerListComponent implements OnInit {
   data: string[];
   name: string;
   constructor (private customer: CustomerService ) {
-    
     this.data = this.customer.get();
     this.name = '123';
     console.log('_', _ );
-    
   }
   new() {
     this.customer.new();
