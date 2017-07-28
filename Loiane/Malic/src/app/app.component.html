@@ -23,8 +23,13 @@
   </div>
 </nav>
 
-<div>
+<div appFundoAmarelo>
   <h1>Welcome to {{title}}!</h1>
   <app-customer></app-customer>
   <app-opportunity></app-opportunity>
+
 </div>
+
+<p appHighlightMouse>Mouse over highlight OP</p><br>
+<p [appHighlight]="'red'" [default]="'gray'">highlight  COM CORES PERSONALIZADAS</p>
+ 
