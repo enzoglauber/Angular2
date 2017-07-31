@@ -2,8 +2,10 @@
   LIST Customer
 </p>
 
+<input type="text" [(ngModel)]="filter" placeholder="Filtro">
+
 <ul *ngIf="data.length > 0" >
-  <li *ngFor="let customer of data">{{ customer | uppercase | camelCase }}</li>
+  <li *ngFor="let customer of get()">{{ customer | uppercase | camelCase }}</li>
   <li>{{ 155.55 | currency:'BRL':true }}</li>
   <li>{{ date | date:'dd-MMM-yyyy' }}</li>
 
@@ -12,6 +14,9 @@
 <div *ngIf="data.length == 0" >
   Cadastre algum curso!
 </div>
+
+{{valorAsync | async}} <br>
+{{valorAsync2 | async}}
 
 
 <p>{{ data.length | i18nPlural: messageMapping }}</p>
