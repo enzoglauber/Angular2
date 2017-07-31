@@ -3,17 +3,15 @@
 </p>
 
 <ul *ngIf="data.length > 0" >
-  <li *ngFor="let customer of data">{{ customer }}</li>
+  <li *ngFor="let customer of data">{{ customer | uppercase | camelCase }}</li>
+  <li>{{ 155.55 | currency:'BRL':true }}</li>
+  <li>{{ date | date:'dd-MMM-yyyy' }}</li>
+
 </ul>
 
 <div *ngIf="data.length == 0" >
   Cadastre algum curso!
 </div>
 
-<!-- <input type="text" [(ngModel)]="name"> -->
 
-
-
-
-<p>Value: {{ name }}</p>
-
+<p>{{ data.length | i18nPlural: messageMapping }}</p>

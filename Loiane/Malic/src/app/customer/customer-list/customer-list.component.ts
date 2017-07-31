@@ -12,13 +12,16 @@ import * as _ from 'underscore';
 export class CustomerListComponent implements OnInit {
   data: string[];
   name: string;
-  constructor (private customer: CustomerService ) {
-    this.data = this.customer.get();
+  date: Date = new Date;
+  messageMapping: {[k: string]: string} = {'=0': 'No Customer.', '=1': 'One customer.', 'other': '# customers.'};
+
+  constructor (private _customer: CustomerService ) {
+    this.data = this._customer.get();
     this.name = '123';
     console.log('_', _ );
   }
   new() {
-    this.customer.new();
+    this._customer.new();
   }
   event(event: KeyboardEvent) {
     console.log('event', event);

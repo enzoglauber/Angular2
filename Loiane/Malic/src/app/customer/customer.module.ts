@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { CustomerComponent } from './customer.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 
+import { CamelCasePipe } from '../shared/camel-case.pipe';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -12,7 +14,8 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
   ],
   declarations: [
     CustomerComponent,
-    CustomerListComponent
+    CustomerListComponent,
+    CamelCasePipe
   ],
   exports: [
     CustomerComponent

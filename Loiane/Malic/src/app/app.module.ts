@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 // import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -10,6 +10,9 @@ import { CustomerModule } from './customer/customer.module';
 import { FundoAmareloDirective } from './shared/fundo-amarelo.directive';
 import { HighlightMouseDirective } from './shared/highlight-mouse.directive';
 import { HighlightDirective } from './shared/highlight.directive';
+
+import { SettingsService } from './settings.service';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,16 @@ import { HighlightDirective } from './shared/highlight.directive';
     OpportunityModule,
     CustomerModule
   ],
-  providers: [CustomerService],
+  providers: [
+    SettingsService, 
+    { 
+      provide: LOCALE_ID,
+      deps:[SettingsService],
+      useFactory: (settings) => settings.getLocale()
+      // useValue:'pt-BR' //en_US
+    },
+    CustomerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

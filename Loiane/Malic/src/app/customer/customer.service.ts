@@ -5,7 +5,7 @@ export class CustomerService {
   constructor() { }
   //
   get () {
-    return ['BASF', 'NESTLE', 'Petrobras'];
+    return ['BASF LTDA', 'NESTLE do GRupo Pão de acuçar', 'Petrobras do brasil'];
   }
   new () {
     console.log('new porra');
