@@ -5,11 +5,11 @@ import { Subscription } from "rxjs/Rx";
 import { CustomerService } from '../customer.service';
 
 @Component({
-  selector: 'app-customer-edit',
-  templateUrl: './customer-edit.component.html',
-  styleUrls: ['./customer-edit.component.scss']
+  selector: 'app-customer-save',
+  templateUrl: './customer-save.component.html',
+  styleUrls: ['./customer-save.component.scss']
 })
-export class CustomerEditComponent implements OnInit, OnDestroy {
+export class CustomerSaveComponent implements OnInit, OnDestroy {
   id: string;
   page: string;
   customer: any;
@@ -31,7 +31,7 @@ export class CustomerEditComponent implements OnInit, OnDestroy {
       // 
       this.customer = this._customer.get(this.id);
       if (!this.customer) {
-        this.router.navigate['/']; 
+        // this.router.navigate['/']; 
       }
     })
   }

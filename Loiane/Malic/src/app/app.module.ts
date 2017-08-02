@@ -11,7 +11,7 @@ import { CustomerService } from './customer/customer.service';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { CustomerModule } from './customer/customer.module';
-import { AppRoutesModule } from "./app.routes.module";
+import { AppRoutesModule } from "./app.routing.module";
 
 import { SettingsService } from './settings.service';
 

@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from './../shared/shared.module';
+import { AppCustomerRoutesModule } from './customer.routing.module';
 import { CustomerComponent } from './customer.component';
+import { CustomerSaveComponent } from './customer-save/customer-save.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
-import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 
 @NgModule({
   imports: [
-    SharedModule
+    SharedModule,
+    AppCustomerRoutesModule
   ],
   declarations: [
     CustomerComponent,
-    CustomerListComponent,
-    CustomerEditComponent
+    CustomerSaveComponent,
+    CustomerListComponent
   ],
   exports: [
     CustomerComponent

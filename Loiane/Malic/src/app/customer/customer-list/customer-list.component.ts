@@ -30,8 +30,8 @@ export class CustomerListComponent implements OnInit {
     this.data = this._customer.list();
     this.name = '123';
   }
-  new() {
-    this._customer.new();
+  save() {
+    this._customer.save();
   }
   next() {
     this.router.navigate(['/customer', ++this.page ]);
@@ -52,14 +52,14 @@ export class CustomerListComponent implements OnInit {
     })
   }
 
-  valorAsync = new Promise((resolve, reject) => {
-    setTimeout(() => resolve('VALOR ASYNC'), 2000)
-  })
+  // valorAsync = new Promise((resolve, reject) => {
+  //   setTimeout(() => resolve('VALOR ASYNC'), 2000)
+  // })
 
-  valorAsync2 = Observable.interval(2000).map(valor => 'Valor async 2');
+  // valorAsync2 = Observable.interval(2000).map(valor => 'Valor async 2');
 
-  event(event: KeyboardEvent) {
-    // console.log('event', event);
-  }
+  // event(event: KeyboardEvent) {
+  //   // console.log('event', event);
+  // }
  
 }
