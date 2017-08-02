@@ -1,17 +1,17 @@
-// import { FormsModule } from '@angular/forms';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MaterializeModule } from 'angular2-materialize';
 // import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
-import { routes } from "./app.routes";
+// import { routes } from "./app.routes";
 import { AppComponent } from './app.component';
 import { OpportunityModule } from './opportunity/opportunity.module';
 import { CustomerService } from './customer/customer.service';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { CustomerModule } from './customer/customer.module';
+import { AppRoutesModule } from "./app.routes.module";
 
 import { SettingsService } from './settings.service';
 
@@ -20,14 +20,13 @@ import { SettingsService } from './settings.service';
     AppComponent
   ],
   imports: [
-    MaterializeModule,
     BrowserModule,
-    // FormsModule,
+    MaterializeModule,
+    AppRoutesModule,
     AuthModule,
     SharedModule,
-    OpportunityModule,
     CustomerModule,
-    routes
+    OpportunityModule
   ],
   providers: [
     SettingsService, 

@@ -29,13 +29,11 @@ export class CustomerListComponent implements OnInit {
   ) {
     this.data = this._customer.list();
     this.name = '123';
-    // console.log('_', _ );
   }
   new() {
     this._customer.new();
   }
   next() {
-    // this.page++;
     this.router.navigate(['/customer', ++this.page ]);
   }
   list(){
