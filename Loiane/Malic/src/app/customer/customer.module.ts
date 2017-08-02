@@ -1,21 +1,18 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
+import { SharedModule } from './../shared/shared.module';
 import { CustomerComponent } from './customer.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
-
-import { CamelCasePipe } from '../shared/camel-case.pipe';
+import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule
+    SharedModule
   ],
   declarations: [
     CustomerComponent,
     CustomerListComponent,
-    CamelCasePipe
+    CustomerEditComponent
   ],
   exports: [
     CustomerComponent

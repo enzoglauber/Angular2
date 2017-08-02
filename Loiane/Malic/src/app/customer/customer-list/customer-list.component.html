@@ -1,22 +1,29 @@
-<p>
-  LIST Customer
-</p>
+<h3 class="header">
+  Lista de Clientes
+</h3>
 
+<p class="right-align">{{ data.length | i18nPlural: messageMapping }}</p>
 <input type="text" [(ngModel)]="filter" placeholder="Filtro">
+<div class="collection" *ngIf="data.length > 0" >
+  <a class="collection-item"
+    [routerLink]="['/customer/edit/', customer.id]"
+    *ngFor="let customer of list()">{{ customer.name | uppercase | camelCase }}</a>
+</div>
+{{page}}
 
-<ul *ngIf="data.length > 0" >
-  <li *ngFor="let customer of get()">{{ customer | uppercase | camelCase }}</li>
+<button class="btn waves-effect waves-light right" type="button" name="action" (click)="next()">
+  <i class="material-icons">arrow_forward</i>
+</button>
+
+<br>
+<!-- <ul *ngIf="data.length > 0" >
+  <li *ngFor="let customer of get()">{{ customer.name | uppercase | camelCase }}</li>
   <li>{{ 155.55 | currency:'BRL':true }}</li>
   <li>{{ date | date:'dd-MMM-yyyy' }}</li>
+</ul> -->
 
-</ul>
 
 <div *ngIf="data.length == 0" >
-  Cadastre algum curso!
+  Cadastre algum customer!
 </div>
 
-{{valorAsync | async}} <br>
-{{valorAsync2 | async}}
-
-
-<p>{{ data.length | i18nPlural: messageMapping }}</p>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from "rxjs/Rx";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Subscription } from "rxjs/Rx";
+import * as _ from 'underscore';
 
 import { CustomerService } from '../customer.service';
-import * as _ from 'underscore';
-import { Observable } from "rxjs/Rx";
 
 @Component({
   selector: 'app-customer-list',
@@ -11,40 +13,55 @@ import { Observable } from "rxjs/Rx";
 })
 
 export class CustomerListComponent implements OnInit {
-  data: string[];
   name: string;
-  filter: string;
   date: Date = new Date;
+  filter: string;
+  data: Array<any>;
+  // 
+  _route: Subscription;
+  page: number;
   messageMapping: {[k: string]: string} = {'=0': 'No Customer.', '=1': 'One customer.', 'other': '# customers.'};
 
-  constructor (private _customer: CustomerService ) {
-    this.data = this._customer.get();
+  constructor (
+    private router: Router,
+    private _customer: CustomerService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.data = this._customer.list();
     this.name = '123';
-    console.log('_', _ );
+    // console.log('_', _ );
   }
   new() {
     this._customer.new();
   }
-
-  get(){
+  next() {
+    // this.page++;
+    this.router.navigate(['/customer', ++this.page ]);
+  }
+  list(){
     if (this.data.length === 0 || this.filter === undefined
     || this.filter.trim() === ''){
       return this.data;
     }
     return this.data.filter(
-       v => v.toLocaleLowerCase().includes(this.filter.toLocaleLowerCase())
+      v => v.name.toLocaleLowerCase().includes(this.filter.toLocaleLowerCase())
     );
   }
 
+  ngOnInit() {
+    this._route = this.activatedRoute.params.subscribe((params: any) => {
+      this.page = params['page'];
+    })
+  }
+
   valorAsync = new Promise((resolve, reject) => {
-    setTimeout(() => resolve('VALOR ASYNC'), 2000)  
+    setTimeout(() => resolve('VALOR ASYNC'), 2000)
   })
 
   valorAsync2 = Observable.interval(2000).map(valor => 'Valor async 2');
 
   event(event: KeyboardEvent) {
-    console.log('event', event);
+    // console.log('event', event);
   }
-  ngOnInit() {
-  }
+ 
 }

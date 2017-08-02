@@ -5,43 +5,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MaterializeModule } from 'angular2-materialize';
 // import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
-import { routing } from "./app.routes";
+import { routes } from "./app.routes";
 import { AppComponent } from './app.component';
 import { OpportunityModule } from './opportunity/opportunity.module';
 import { CustomerService } from './customer/customer.service';
+import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { CustomerModule } from './customer/customer.module';
-import { FundoAmareloDirective } from './shared/fundo-amarelo.directive';
-import { HighlightMouseDirective } from './shared/highlight-mouse.directive';
-import { HighlightDirective } from './shared/highlight.directive';
 
 import { SettingsService } from './settings.service';
 
-
 @NgModule({
   declarations: [
-    AppComponent,
-    FundoAmareloDirective,
-    HighlightMouseDirective,
-    HighlightDirective
+    AppComponent
   ],
   imports: [
     MaterializeModule,
     BrowserModule,
     // FormsModule,
     AuthModule,
+    SharedModule,
     OpportunityModule,
     CustomerModule,
-    routing
+    routes
   ],
   providers: [
-    // SettingsService, 
-    // { 
-    //   provide: LOCALE_ID,
-    //   deps:[SettingsService],
-    //   useFactory: (settings) => settings.getLocale()
-    //   // useValue:'pt-BR' //en_US
-    // },
+    SettingsService, 
+    { 
+      provide: LOCALE_ID,
+      deps:[SettingsService],
+      useFactory: (settings) => settings.getLocale()
+    },
     CustomerService
   ],
   bootstrap: [AppComponent]
