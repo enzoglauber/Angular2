@@ -7,8 +7,8 @@ import { OpportunityComponent } from "./opportunity/opportunity.component";
 @NgModule({
     imports: [RouterModule.forRoot([
         { path: 'login', component: LoginComponent },
-        { path: 'opportunity/:page', component: OpportunityComponent }
-    ], { enableTracing: !true } )],
+        { path: 'opportunity/list/:page', component: OpportunityComponent }
+    ], { enableTracing: true } )],
     exports: [RouterModule]
 })
 export class AppRoutesModule {}

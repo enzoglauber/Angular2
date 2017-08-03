@@ -3,14 +3,18 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { CustomerComponent } from "./customer.component";
 import { CustomerSaveComponent } from './customer-save/customer-save.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+
 
 @NgModule({
     imports: [RouterModule.forChild([
-        { path: 'customer/:page', component: CustomerComponent },
-        { path: 'customer/save', component: CustomerSaveComponent, children: [
-            { path: '/:id', component: CustomerSaveComponent }
-        ] },
-        { path: 'customer/save/:id', component: CustomerSaveComponent }
+        { path: 'customer', component: CustomerComponent, children: [
+            { path: 'save', component: CustomerComponent, children: [
+                { path: '', component: CustomerSaveComponent },
+                { path: ':id', component: CustomerSaveComponent }
+            ] },
+            { path: 'list/:page', component: CustomerListComponent }
+        ]}
     ])],
     exports: [RouterModule]
 })

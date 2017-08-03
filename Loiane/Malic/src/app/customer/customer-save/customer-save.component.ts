@@ -11,7 +11,6 @@ import { CustomerService } from '../customer.service';
 })
 export class CustomerSaveComponent implements OnInit, OnDestroy {
   id: string;
-  page: string;
   customer: any;
   _route: Subscription;
 
@@ -27,12 +26,8 @@ export class CustomerSaveComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this._route = this.activatedRoute.params.subscribe((params: any) => {
       this.id = params['id'];
-      this.page = params['page'];
-      // 
+      //
       this.customer = this._customer.get(this.id);
-      if (!this.customer) {
-        // this.router.navigate['/']; 
-      }
     })
   }
 
