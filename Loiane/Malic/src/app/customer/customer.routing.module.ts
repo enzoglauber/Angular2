@@ -8,7 +8,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 
 @NgModule({
     imports: [RouterModule.forChild([
-        { path: 'customer', component: CustomerComponent, children: [
+        { path: '', component: CustomerComponent, children: [
             { path: 'save', component: CustomerComponent, children: [
                 { path: '', component: CustomerSaveComponent },
                 { path: ':id', component: CustomerSaveComponent }

@@ -22,7 +22,6 @@ export class CustomerSaveComponent implements OnInit, OnDestroy {
     // this.id = this.route.snapshot.params.id;
     // console.log(this.route);
   }
-
   ngOnInit() {
     this._route = this.activatedRoute.params.subscribe((params: any) => {
       this.id = params['id'];
@@ -30,8 +29,12 @@ export class CustomerSaveComponent implements OnInit, OnDestroy {
       this.customer = this._customer.get(this.id);
     })
   }
-
   ngOnDestroy() {
     this._route.unsubscribe();
+  }
+
+  saveCustomer() {
+    console.log('cusinho', this.customer);
+    
   }
 }

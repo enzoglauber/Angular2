@@ -34,7 +34,7 @@ export class CustomerListComponent implements OnInit {
     this._customer.save();
   }
   next() {
-    this.router.navigate(['/customer', ++this.page ]);
+    this.router.navigate(['/customer/list', ++this.page ]);
   }
   list(){
     if (this.data.length === 0 || this.filter === undefined
@@ -51,7 +51,7 @@ export class CustomerListComponent implements OnInit {
       this.page = params['page'];
     })
   }
-
+  
   // valorAsync = new Promise((resolve, reject) => {
   //   setTimeout(() => resolve('VALOR ASYNC'), 2000)
   // })
