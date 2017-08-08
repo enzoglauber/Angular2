@@ -12,9 +12,9 @@ import { ResetComponent } from './reset/reset.component';
     SharedModule
   ],
   declarations: [
-    LoginComponent, 
-    RegisterComponent, 
-    ResetComponent, 
+    LoginComponent,
+    RegisterComponent,
+    ResetComponent,
     AuthComponent
   ],
   exports: [
