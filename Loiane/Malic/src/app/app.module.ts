@@ -5,16 +5,17 @@ import { MaterializeModule } from 'angular2-materialize';
 // import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 // import { routes } from "./app.routes";
+import { AppRoutesModule } from "./app.routing.module";
+import { AuthGuard } from './guards/auth.guard';
+import { CustomerGuard } from './guards/customer.guard';
+
 import { AppComponent } from './app.component';
-import { OpportunityModule } from './opportunity/opportunity.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
+import { OpportunityModule } from './opportunity/opportunity.module';
 
 import { AuthService } from './auth/auth.service';
 import { CustomerService } from './customer/customer.service';
-// import { CustomerModule } from './customer/customer.module';
-import { AppRoutesModule } from "./app.routing.module";
-
 import { SettingsService } from './settings.service';
 
 @NgModule({
@@ -38,7 +39,9 @@ import { SettingsService } from './settings.service';
       useFactory: (settings) => settings.getLocale()
     },
     CustomerService, 
-    AuthService
+    AuthService, 
+    CustomerGuard,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

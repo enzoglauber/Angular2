@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ResetComponent } from './reset/reset.component';
 
+import { AuthGuard } from './../guards/auth.guard';
+
 @NgModule({
   imports: [
     SharedModule
@@ -19,6 +21,7 @@ import { ResetComponent } from './reset/reset.component';
   ],
   exports: [
     AuthComponent
-  ]
+  ],
+  providers: [AuthGuard]
 })
 export class AuthModule { }
