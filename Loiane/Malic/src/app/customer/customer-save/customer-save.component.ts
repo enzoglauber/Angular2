@@ -3,16 +3,18 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs/Rx";
 
 import { CustomerService } from '../customer.service';
+import { FormCanDeactivate } from './../../guards/form-caneactivate';
 
 @Component({
   selector: 'app-customer-save',
   templateUrl: './customer-save.component.html',
   styleUrls: ['./customer-save.component.scss']
 })
-export class CustomerSaveComponent implements OnInit, OnDestroy {
+export class CustomerSaveComponent implements OnInit, OnDestroy, FormCanDeactivate {
   id: string;
   customer: any;
   _route: Subscription;
+  private isChange: boolean;
 
   constructor( 
     private router: Router,
@@ -32,9 +34,24 @@ export class CustomerSaveComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this._route.unsubscribe();
   }
-
+  
   saveCustomer() {
     console.log('cusinho', this.customer);
-    
+  }
+  
+  onInput() {
+    this.isChange = true;
+    console.log('onInput', this.customer);
+  }
+  
+  formIsChange() {
+    if (this.isChange) {
+      confirm("Tem certeza que deseja sari dessa pagina?");
+    }
+    return true;
+  }
+
+  deactivate() {
+    return this.formIsChange();
   }
 }

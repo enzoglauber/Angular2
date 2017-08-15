@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from './../shared/shared.module';
-import { AppCustomerRoutesModule } from './customer.routing.module';
+import { CustomerRoutingModule } from './customer.routing.module';
+import { CustomerDeactivateGuard } from './../guards/customer-deactivate.guard';
+
 import { CustomerComponent } from './customer.component';
 import { CustomerSaveComponent } from './customer-save/customer-save.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
@@ -9,7 +11,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
 @NgModule({
   imports: [
     SharedModule,
-    AppCustomerRoutesModule
+    CustomerRoutingModule
   ],
   declarations: [
     CustomerComponent,
@@ -18,6 +20,10 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
   ],
   exports: [
     CustomerComponent
+  ],
+  providers:[
+    CustomerRoutingModule,
+    CustomerDeactivateGuard
   ]
 })
 export class CustomerModule { }
