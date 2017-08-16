@@ -17,10 +17,12 @@ import { OpportunityModule } from './opportunity/opportunity.module';
 import { AuthService } from './auth/auth.service';
 import { CustomerService } from './customer/customer.service';
 import { SettingsService } from './settings.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

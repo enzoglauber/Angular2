@@ -10,7 +10,7 @@ export class CustomerGuard implements CanActivateChild {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean>|Promise<boolean>|boolean {
-    console.log('customer guard', route, state);
+    console.log('customer guard de rota filha', route, state);
     
     return true;
     // if (this.$auth.isAuth()) {

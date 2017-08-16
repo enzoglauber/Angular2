@@ -7,6 +7,8 @@ import { CustomerDeactivateGuard } from './../guards/customer-deactivate.guard';
 import { CustomerComponent } from './customer.component';
 import { CustomerSaveComponent } from './customer-save/customer-save.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { CustomerListResolver } from './guards/customer-list.resolver';
+import { CustomerSaveResolver } from './guards/customer-save.resolver';
 
 @NgModule({
   imports: [
@@ -23,7 +25,9 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
   ],
   providers:[
     CustomerRoutingModule,
-    CustomerDeactivateGuard
+    CustomerDeactivateGuard,
+    CustomerListResolver,
+    CustomerSaveResolver
   ]
 })
 export class CustomerModule { }

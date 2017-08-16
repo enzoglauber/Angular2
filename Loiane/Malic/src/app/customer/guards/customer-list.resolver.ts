@@ -6,13 +6,12 @@ import { Customer } from './../customer.model';
 import { CustomerService } from './../customer.service';
 
 @Injectable()
-export class CustomerSaveResolver implements Resolve<Customer> {
+export class CustomerListResolver implements Resolve<Customer> {
     constructor(private $customer: CustomerService) {}
     resolve(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<any>|Promise<any>|any {
-        console.log('RESOLVE');
-        return this.$customer.get(route.params.id);
+        return this.$customer.list();
     }
 }

@@ -1,3 +1,4 @@
+import { Customer } from './../customer.model';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from "rxjs/Rx";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -19,15 +20,16 @@ export class CustomerListComponent implements OnInit {
   data: Array<any>;
   // 
   _route: Subscription;
+  _data: Subscription;
   page: number;
   messageMapping: {[k: string]: string} = {'=0': 'No Customer.', '=1': 'One customer.', 'other': '# customers.'};
 
   constructor (
     private router: Router,
     private _customer: CustomerService,
-    private activatedRoute: ActivatedRoute
+    private route: ActivatedRoute
   ) {
-    this.data = this._customer.list();
+    // this.data = this._customer.list();
     this.name = '123';
   }
   save() {
@@ -47,11 +49,21 @@ export class CustomerListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._route = this.activatedRoute.params.subscribe((params: any) => {
+    this._route = this.route.params.subscribe((params: any) => {
       this.page = params['page'];
-    })
+    });
+
+    this._data = this.route.data.subscribe(
+      (response: {data: Customer[]}) => {
+        console.log(response);
+        this.data = response.data;
+      }
+    );
   }
-  
+  ngOnDestroy() {
+    this._route.unsubscribe();
+    this._data.unsubscribe();
+  }
   // valorAsync = new Promise((resolve, reject) => {
   //   setTimeout(() => resolve('VALOR ASYNC'), 2000)
   // })

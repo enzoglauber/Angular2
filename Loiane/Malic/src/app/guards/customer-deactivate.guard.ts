@@ -13,6 +13,7 @@ export class CustomerDeactivateGuard implements CanDeactivate<FormCanDeactivate>
         state: RouterStateSnapshot
     ): Observable<boolean>|Promise<boolean>|boolean {
         console.log("Deactivate", state, component.deactivate());
-        return !component.deactivate();
+        // return !component.deactivate();
+        return true;
     }
 }

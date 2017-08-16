@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs/Rx";
 
+import { Customer } from './../customer.model';
 import { CustomerService } from '../customer.service';
 import { FormCanDeactivate } from './../../guards/form-caneactivate';
 
@@ -11,37 +12,36 @@ import { FormCanDeactivate } from './../../guards/form-caneactivate';
   styleUrls: ['./customer-save.component.scss']
 })
 export class CustomerSaveComponent implements OnInit, OnDestroy, FormCanDeactivate {
-  id: string;
-  customer: any;
+  entity: Customer;
   _route: Subscription;
+  _entity: Subscription;
   private isChange: boolean;
 
   constructor( 
+    private route: ActivatedRoute,
     private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private _customer: CustomerService
-  ) {
-    // this.id = this.route.snapshot.params.id;
-    // console.log(this.route);
-  }
+    private $customer: CustomerService
+  ) {}
   ngOnInit() {
-    this._route = this.activatedRoute.params.subscribe((params: any) => {
-      this.id = params['id'];
-      //
-      this.customer = this._customer.get(this.id);
-    })
+    this._entity = this.route.data.subscribe(
+      (resolve: { entity: Customer}) => {
+        console.log(resolve);
+        
+        this.entity = resolve.entity;
+      }
+    );
   }
   ngOnDestroy() {
-    this._route.unsubscribe();
+    this._entity.unsubscribe();
   }
   
-  saveCustomer() {
-    console.log('cusinho', this.customer);
+  save() {
+    console.log('cusinho', this.entity);
   }
   
   onInput() {
     this.isChange = true;
-    console.log('onInput', this.customer);
+    console.log('onInput', this.entity);
   }
   
   formIsChange() {
