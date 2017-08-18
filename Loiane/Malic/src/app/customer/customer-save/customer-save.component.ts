@@ -22,20 +22,26 @@ export class CustomerSaveComponent implements OnInit, OnDestroy, FormCanDeactiva
     private router: Router,
     private $customer: CustomerService
   ) {}
+
   ngOnInit() {
+    this.entity = {id:null, name: null, email: null};
     this._entity = this.route.data.subscribe(
-      (resolve: { entity: Customer}) => {
-        console.log(resolve);
-        
-        this.entity = resolve.entity;
+      (resolve: { entity: Customer }) => {
+        if (resolve) {
+          this.entity = resolve.entity;
+        } else {
+        }
+        console.log('resolve', resolve, this.entity);
       }
     );
   }
+
   ngOnDestroy() {
     this._entity.unsubscribe();
   }
   
-  save() {
+  save(form) {
+    console.log('form', form);
     console.log('cusinho', this.entity);
   }
   

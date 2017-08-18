@@ -5,7 +5,7 @@ import { MaterializeModule } from 'angular2-materialize';
 // import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 // import { routes } from "./app.routes";
-import { AppRoutesModule } from "./app.routing.module";
+import { AppRoutingModule } from "./app.routing.module";
 import { AuthGuard } from './guards/auth.guard';
 import { CustomerGuard } from './guards/customer.guard';
 
@@ -27,7 +27,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [
     BrowserModule,
     MaterializeModule,
-    AppRoutesModule,
+    AppRoutingModule,
     SharedModule,
     AuthModule,
     // CustomerModule,

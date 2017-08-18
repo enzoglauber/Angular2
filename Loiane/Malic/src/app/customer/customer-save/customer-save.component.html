@@ -3,27 +3,44 @@
 </h5>
 
 <div class="col s12">
-  <div class="row">
-    <div class="input-field col s12">
-      <input disabled [(ngModel)]="entity.id" id="disabled" type="text">
-      <label for="disabled" class="active">#</label>
+  <form #form="ngForm" (ngSubmit)="save(form)" >
+    <div class="row">
+      <div class="input-field col s12">
+        <input disabled  name="id" [(ngModel)]="entity.id" id="disabled" type="text">
+        <label for="disabled" class="active">#</label>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <input id="name" [(ngModel)]="entity.name" class="validate" (input)="onInput()">
-      <label for="name" class="active">Nome</label>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="name" name="name" class="validate"
+          required
+          #name="ngModel"
+          (input)="onInput()"
+          [(ngModel)]="entity.name"
+          [ngClass]="{'invalid': name.invalid && name.touched}" >
+          <label for="name" class="active" data-error="This field is required.">Nome</label>
+          <p *ngIf="name.invalid && name.touched" >
+            This field is required.
+          </p>
+          invalid {{name.invalid}}<br>
+          touched {{name.touched}}
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="input-field col s12">
-      <input id="email" [(ngModel)]="entity.email" type="email" class="validate">
-      <label for="email" class="active">Email</label>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" name="email" type="email" class="validate"
+          #email="ngModel"
+          [(ngModel)]="entity.email"
+          required
+          email>
+        <label for="email" class="active">Email</label>
+        <!-- {{email.valid}} -->
+      </div>
     </div>
-  </div>
-   <div class="row">
-    <button class="btn waves-effect waves-light right" type="button" (click)="save()">
-      <i class="material-icons left">cloud</i> Save
-    </button>
-  </div> 
+     <div class="row">
+      <button class="btn waves-effect waves-light right" type="button" (click)="save(form)">
+        <i class="material-icons left">cloud</i> Save
+      </button>
+    </div>
+  </form>
 </div>

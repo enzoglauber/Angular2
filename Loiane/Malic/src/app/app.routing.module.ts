@@ -33,4 +33,4 @@ import { OpportunityComponent } from "./opportunity/opportunity.component";
     ], { enableTracing: !true } )],
     exports: [RouterModule]
 })
-export class AppRoutesModule {}
+export class AppRoutingModule {}
