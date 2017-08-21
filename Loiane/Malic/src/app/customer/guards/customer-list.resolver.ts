@@ -12,6 +12,8 @@ export class CustomerListResolver implements Resolve<Customer> {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot
     ): Observable<any>|Promise<any>|any {
+        console.log('Customer Resolve');
+        
         return this.$customer.list();
     }
 }

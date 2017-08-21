@@ -26,9 +26,7 @@ export class CustomerService {
   }
   get (id: string) {
     let data = this.list();
-
-    console.log("data", data,  {id:id}, _.where(data, {id:id})[0]);
-    
+    // 
     if (id) {
       return _.where(data, {id: id})[0];
     }

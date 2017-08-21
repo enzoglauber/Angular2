@@ -8,10 +8,11 @@ import { FundoAmareloDirective } from './fundo-amarelo.directive';
 import { HighlightMouseDirective } from './highlight-mouse.directive';
 import { HighlightDirective } from './highlight.directive';
 import { CamelCasePipe } from '../shared/camel-case.pipe';
+import { FormDebugComponent } from './form-debug/form-debug.component';
 
 @NgModule({
   imports: [ CommonModule, FormsModule, RouterModule, HttpModule ],
-  declarations: [ CamelCasePipe, FundoAmareloDirective, HighlightMouseDirective, HighlightDirective],
+  declarations: [ CamelCasePipe, FundoAmareloDirective, HighlightMouseDirective, HighlightDirective, FormDebugComponent],
   exports: [
     CommonModule,
     FormsModule,
@@ -21,6 +22,7 @@ import { CamelCasePipe } from '../shared/camel-case.pipe';
     FundoAmareloDirective,
     HighlightMouseDirective,
     HighlightDirective,
+    FormDebugComponent,
   ]
 })
 export class SharedModule { }
