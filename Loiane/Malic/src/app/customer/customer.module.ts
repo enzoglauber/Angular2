@@ -21,7 +21,7 @@ import { CustomerSaveResolver } from './guards/customer-save.resolver';
     CustomerListComponent
   ],
   exports: [
-    CustomerComponent
+    CustomerComponent,
   ],
   providers:[
     CustomerRoutingModule,

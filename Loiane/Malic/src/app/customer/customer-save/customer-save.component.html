@@ -4,7 +4,7 @@
 
 <div class="col s12">
   <form #f="ngForm" (ngSubmit)="save(f)" >
-    <div class="row" *ngIf="entity.id">
+    <div class="row" [hidden]="!entity.id">
       <div class="input-field col s12">
         <input disabled  name="id" [(ngModel)]="entity.id" id="disabled" type="text">
         <label for="disabled" class="active">#</label>
@@ -42,7 +42,7 @@
     <div ngModelGroup="address">
       <div class="row">
         <div class="input-field col s4">
-          <input id="zip" name="zip" type="text" class="validate" #zip="ngModel" [(ngModel)]="entity.zip">
+          <input id="zip" name="zip" type="text" class="validate" #zip="ngModel" [(ngModel)]="entity.zip" (blur)="getAddress(zip.value, f)">
           <label for="zip">CEP</label>
         </div>
         <div class="input-field col s1">
