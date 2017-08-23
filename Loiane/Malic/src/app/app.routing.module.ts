@@ -1,4 +1,4 @@
-import { NgModule,ModuleWithProviders } from "@angular/core";
+import { NgModule, ModuleWithProviders } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
 import { AuthGuard } from './guards/auth.guard';
@@ -8,7 +8,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ResetComponent } from './auth/reset/reset.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-import { OpportunityComponent } from "./opportunity/opportunity.component";
+// import { OpportunityComponent } from "./opportunity/opportunity.component";
 
 @NgModule({
     imports: [RouterModule.forRoot([
@@ -17,17 +17,18 @@ import { OpportunityComponent } from "./opportunity/opportunity.component";
         { path: 'reset-password', component: ResetComponent },
         
         {
-            path: 'opportunity/list/:page',
-            component: OpportunityComponent,
-            canActivate: [AuthGuard],
-            canLoad: [AuthGuard]
-        }, {
             path: 'customer', 
             loadChildren: 'app/customer/customer.module#CustomerModule', 
             canActivate: [AuthGuard],
             canLoad: [AuthGuard],
             canActivateChild: [CustomerGuard]
+        }, {
+            path: 'opportunity', 
+            loadChildren: 'app/opportunity/opportunity.module#OpportunityModule', 
+            canActivate: [AuthGuard],
+            canLoad: [AuthGuard]
         },
+        
         { path:'', redirectTo: 'login', pathMatch: 'full' },
         { path:'**', component: PageNotFoundComponent }
     ], { enableTracing: !true } )],

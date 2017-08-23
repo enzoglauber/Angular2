@@ -1,3 +1,48 @@
-<p>
-  opportunity-list works!
-</p>
+<h3 class="header grey-text text-darken-3">
+  Lista de Opportunidades
+</h3>
+
+<div class="row">
+  <div class="col s12 m12">
+    <div class="card">
+      <div class="card-image">
+        <a class="btn-floating btn-large halfway-fab waves-effect waves-light deep-purple darken-2"
+        [routerLink]="['/opportunity/save/']"><i class="material-icons">add</i></a>
+      </div>
+        
+      <div class="card-content">
+        <nav class="transparent">
+          <div class="nav-wrapper">
+            <div class="input-field">
+              <input id="search" type="search" [(ngModel)]="filter" placeholder="Filter" required>
+              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </div>
+        </nav>
+
+        <div class="collection" *ngIf="data.length > 0" >
+          <a class="collection-item"
+          [routerLink]="['/opportunity/save/', opportunity.id]"
+          *ngFor="let opportunity of list()">
+          <span class="badge">{{ date | date:'dd-MMM-yyyy' }}</span>
+          <span class="badge new blue" data-badge-caption="">{{ 155.55 | currency:'BRL':true }}</span>
+          {{ opportunity.name | uppercase | camelCase }}</a>
+        </div>
+
+        {{page}} | {{ data.length | i18nPlural: messageMapping }}
+        <button class="btn waves-effect waves-light right" type="button" name="action" (click)="next()">
+          <i class="material-icons">arrow_forward</i>
+        </button>
+        <div *ngIf="data.length == 0" >
+          Cadastre algum opportunity!
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
+

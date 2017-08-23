@@ -13,7 +13,6 @@ export class OpportunityListResolver implements Resolve<Opportunity> {
         state: RouterStateSnapshot
     ): Observable<any>|Promise<any>|any {
         console.log('Opportunity Resolve');
-        
         return this.$opportunity.list();
     }
 }

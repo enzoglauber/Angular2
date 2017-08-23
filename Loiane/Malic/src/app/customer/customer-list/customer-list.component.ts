@@ -1,8 +1,7 @@
 import { Customer } from './../customer.model';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs/Rx";
+import { Observable, Subscription } from "rxjs/Rx";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Subscription } from "rxjs/Rx";
 import * as _ from 'underscore';
 
 import { CustomerService } from '../customer.service';
@@ -26,14 +25,11 @@ export class CustomerListComponent implements OnInit {
 
   constructor (
     private router: Router,
-    private _customer: CustomerService,
+    private $customer: CustomerService,
     private route: ActivatedRoute
-  ) {
-    // this.data = this._customer.list();
-    this.name = '123';
-  }
+  ) {}
   save() {
-    this._customer.save();
+    this.$customer.save();
   }
   next() {
     this.router.navigate(['/customer/list', ++this.page ]);
@@ -73,5 +69,5 @@ export class CustomerListComponent implements OnInit {
   // event(event: KeyboardEvent) {
   //   // console.log('event', event);
   // }
- 
 }
+
