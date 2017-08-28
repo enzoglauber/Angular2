@@ -3,87 +3,35 @@
 </h5>
 
 <div class="col s12">
-  <form #f="ngForm" (ngSubmit)="save(f)" >
-    <div class="row" [hidden]="!entity.id">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" >
+    <!-- <div class="row" [hidden]="!entity.id">
       <div class="input-field col s12">
-        <input disabled  name="id" [(ngModel)]="entity.id" id="disabled" type="text">
+        <input disabled  name="id" id="disabled" type="text">
         <label for="disabled" class="active">#</label>
       </div>
-    </div>
+    </div> -->
     <div class="row">
       <div class="input-field col s12">
-        <input id="name" name="name" class="validate"
-          required
-          #name="ngModel"
-          (input)="onInput()"
-          [(ngModel)]="entity.name"
-          [ngClass]="{'invalid': name.invalid && name.touched}" >
+        <input id="name" formControlName="name" class="validate" [ngClass]="{'invalid': valid('name')}">
         <label for="name" class="active" data-error="This field is required.">Nome</label>
-        <p *ngIf="name.invalid && name.touched" >
-          This field is required.
-        </p>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <input id="email" name="email" type="email" class="validate"
-          #email="ngModel"
-          [(ngModel)]="entity.email"
-          [ngClass]="{'invalid': email.invalid && email.touched}"
-          required
-          email>
-        <label for="email" class="active">Email</label>
-        <p *ngIf="email.invalid && email.touched" >
-            Email invalido.
-        </p>
+        <input id="email" formControlName="email" type="email" class="validate" [ngClass]="{'invalid': valid('email')}">
+        <label for="email" class="active" data-error="Email invalid.">Email</label>
       </div>
     </div>
-
-    <div ngModelGroup="address">
-      <div class="row">
-        <div class="input-field col s4">
-          <input id="zip" name="zip" type="text" class="validate" #zip="ngModel" [(ngModel)]="entity.zip" (blur)="getAddress(zip.value, f)">
-          <label for="zip">CEP</label>
-        </div>
-        <div class="input-field col s1">
-          <input id="number" name="number" type="text" class="validate" #number="ngModel" [(ngModel)]="entity.number">
-          <label for="number">Nº</label>
-        </div>
-        <div class="input-field col s7">
-          <input id="complement" name="complement" type="text" class="validate" #complement="ngModel" [(ngModel)]="entity.complement">
-          <label for="complement">Complemento</label>
-        </div>
-      </div>
-  
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="street" name="street" type="text" class="validate" #street="ngModel" [(ngModel)]="entity.street">
-          <label for="street">Rua</label>
-        </div>
-      </div>
-  
-      <div class="row">
-        <div class="input-field col s5">
-          <input id="neighborhood" name="neighborhood" type="text" class="validate" #neighborhood="ngModel" [(ngModel)]="entity.neighborhood">
-          <label for="neighborhood">Bairro</label>
-        </div>
-        <div class="input-field col s4">
-          <input id="city" name="city" type="text" class="validate" #city="ngModel" [(ngModel)]="entity.city">
-          <label for="city">Cidade</label>
-        </div>
-        <div class="input-field col s3">
-          <input id="state" name="state" type="text" class="validate" #state="ngModel" [(ngModel)]="entity.state">
-          <label for="state">Estado</label>
-        </div>
-      </div>
-    </div>
-
+    
     <div class="row">
-      <button class="btn waves-effect waves-light right" type="button" (click)="save(f)" 
-        [disabled]="f.invalid">
+      <button class="btn waves-effect waves-light red" type="button" (click)="reset()">
+        <i class="material-icons left">close</i> Reset
+      </button>
+
+      <button class="btn waves-effect waves-light right" type="submit">
         <i class="material-icons left">cloud</i> Save
       </button>
     </div>
   </form>
-  <form-debug [form]="f"></form-debug>
+  <form-debug [form]="form"></form-debug>
 </div>

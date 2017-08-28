@@ -2,18 +2,19 @@ import { Http } from '@angular/http';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs/Rx";
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import 'rxjs/add/operator/map';
 
 import { Opportunity } from './../opportunity.model';
 import { OpportunityService } from '../opportunity.service';
-import { FormCanDeactivate } from './../../guards/form-caneactivate';
 
 @Component({
   selector: 'app-opportunity-save',
   templateUrl: './opportunity-save.component.html',
   styleUrls: ['./opportunity-save.component.scss']
 })
-export class OpportunitySaveComponent implements OnInit, OnDestroy, FormCanDeactivate {
+export class OpportunitySaveComponent implements OnInit, OnDestroy {
+  form: FormGroup;
   entity: Opportunity;
   _route: Subscription;
   _entity: Subscription;
@@ -23,38 +24,58 @@ export class OpportunitySaveComponent implements OnInit, OnDestroy, FormCanDeact
     private route: ActivatedRoute,
     private router: Router,
     private $opportunity: OpportunityService,
-    private http: Http
-
+    private http: Http,
+    private formBuilder: FormBuilder
   ) {}
   
   ngOnInit() {
-    this._entity = this.route.data.subscribe(
-      (resolve: { entity: Opportunity }) => {
-        if (resolve.entity) {
-          this.entity = resolve.entity;
-        } else {
-          this.entity = {id:null, name:null, email:null};
-        }
-        console.log('resolve', resolve, this.entity);
-      }
-    );
+    // this._entity = this.route.data.subscribe(
+    //   (resolve: { entity: Opportunity }) => {
+    //     if (resolve.entity) {
+    //       this.entity = resolve.entity;
+    //     } else {
+    //       this.entity = {id:null, name:null, email:null};
+    //     }
+    //     console.log('resolve', resolve, this.entity);
+    //   }
+    // );
+    // this.form = new FormGroup({
+    //   name: new FormControl('Enzo'),
+    //   email: new FormControl('Enzo')
+    // });
+
+    this.form = this.formBuilder.group({
+      name:['Enzo Glauber', Validators.required],
+      email:[null, [Validators.required, Validators.email] ],
+    });
   }
 
+  onSubmit() {
+    console.log('FORM', this.form);
+    this.http.post('enderecoserver/formusuario', JSON.stringify(this.form.value) )
+      .map(response => response)
+      .subscribe(response => {
+        // form reset
+        this.reset();
+        
+        console.log(response);
+      }, (error: any) => {
+        console.log('error', error);
+        this.reset();
+      });
+  }
+  valid(field) {
+    return !this.form.get(field).valid && this.form.get(field).touched;
+  }
+  reset() {
+    this.form.reset();
+  }
   ngOnDestroy() {
     this._entity.unsubscribe();
   }
   
-  save(form) {
-    // console.log('form', form);
-    // console.log('cusinho', this.entity);
-    this.http.post('enderecoserver/formusuario', this._entity)
-    .map(response => response)
-    .subscribe(response => console.log(response));
-  }
-  
   onInput() {
     this.isChange = true;
-    // console.log('onInput', this.entity);
   }
   
   getAddress(zip, form) {
@@ -94,15 +115,5 @@ export class OpportunitySaveComponent implements OnInit, OnDestroy, FormCanDeact
       }
     })
   }
-
-  formIsChange() {
-    if (this.isChange) {
-      confirm("Tem certeza que deseja sari dessa pagina?");
-    }
-    return true;
-  }
-
-  deactivate() {
-    return this.formIsChange();
-  }
 }
+
