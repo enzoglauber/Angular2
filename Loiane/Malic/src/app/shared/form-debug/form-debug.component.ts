@@ -13,13 +13,15 @@ export class FormDebugComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
+    console.log('form-debug: ', this.form);
     this._changes = this.form.valueChanges.subscribe(() => {
-      console.log('form-debug: ', this.form);
     })
   }
   
   ngOnDestroy() {
-    this._changes.unsubscribe();
+    if (this._changes) {
+      this._changes.unsubscribe();
+    }
   }
   
 }

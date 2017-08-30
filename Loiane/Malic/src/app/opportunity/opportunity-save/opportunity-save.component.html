@@ -6,7 +6,7 @@
   <form [formGroup]="form" (ngSubmit)="onSubmit()" >
     <!-- <div class="row" [hidden]="!entity.id">
       <div class="input-field col s12">
-        <input disabled  name="id" id="disabled" type="text">
+        <input disabled  formControlName="id" id="disabled" type="text">
         <label for="disabled" class="active">#</label>
       </div>
     </div> -->
@@ -22,12 +22,50 @@
         <label for="email" class="active" data-error="Email invalid.">Email</label>
       </div>
     </div>
+
+    <div formGroupName="address">
+      <div class="row">
+        <div class="input-field col s4">
+          <input id="zip" formControlName="zip" type="text" class="validate" (blur)="getAddress()" >
+          <label for="zip">CEP</label>
+        </div>
+        <div class="input-field col s1">
+          <input id="number" formControlName="number" type="text" class="validate">
+          <label for="number">Nº</label>
+        </div>
+        <div class="input-field col s7">
+          <input id="complement" formControlName="complement" type="text" class="validate">
+          <label for="complement">Complemento</label>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="street" formControlName="street" type="text" class="validate">
+          <label for="street">Rua</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s5">
+          <input id="neighborhood" formControlName="neighborhood" type="text" class="validate">
+          <label for="neighborhood">Bairro</label>
+        </div>
+        <div class="input-field col s4">
+          <input id="city" formControlName="city" type="text" class="validate">
+          <label for="city">Cidade</label>
+        </div>
+        <div class="input-field col s3">
+          <input id="state" formControlName="state" type="text" class="validate">
+          <label for="state">Estado</label>
+        </div>
+      </div>
+    </div>
     
     <div class="row">
       <button class="btn waves-effect waves-light red" type="button" (click)="reset()">
         <i class="material-icons left">close</i> Reset
       </button>
-
+      
       <button class="btn waves-effect waves-light right" type="submit">
         <i class="material-icons left">cloud</i> Save
       </button>

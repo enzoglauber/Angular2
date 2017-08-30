@@ -8,6 +8,8 @@ import { CamelCasePipe } from '../shared/camel-case.pipe';
 import { FundoAmareloDirective } from './fundo-amarelo.directive';
 import { HighlightMouseDirective } from './highlight-mouse.directive';
 import { HighlightDirective } from './highlight.directive';
+import { CoreService } from './services/core.service';
+import { StatesService } from './services/states.service';
 
 import { FormDebugComponent } from './form-debug/form-debug.component';
 
@@ -25,6 +27,10 @@ import { FormDebugComponent } from './form-debug/form-debug.component';
     HighlightDirective,
     FormDebugComponent,
     ReactiveFormsModule,
+  ],
+  providers: [
+    CoreService,
+    StatesService
   ]
 })
 export class SharedModule { }
